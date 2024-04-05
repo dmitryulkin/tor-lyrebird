@@ -1,0 +1,24 @@
+# https://manpages.debian.org/jessie/tor/torrc.5
+# try to use built-in (static) crypto hardware acceleration
+HardwareAccel 1
+
+# log to file
+Log notice file /var/log/tor/notices.log
+
+# tor's work data
+DataDirectory /etc/tor/data
+
+# expose ports
+SocksPort 0.0.0.0:9350
+ControlPort 0.0.0.0:9351
+DNSPort 0.0.0.0:9352
+
+# bridges
+UseBridges 1
+ClientTransportPlugin obfs4 exec /usr/bin/lyrebird managed
+bridge obfs4 31.x.x.x:x 9FDBxxx cert=6Ovxxx iat-mode=0
+bridge obfs4 95.x.x.x:x 1981xxx cert=jaxxxx iat-mode=0
+
+# strictly exlude exit nodes
+ExcludeExitNodes {ru}, {by}
+StrictNodes 1

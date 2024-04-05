@@ -1,0 +1,21 @@
+services:
+  tor-lyrebird:
+    container_name: "tor-lyrebird"
+    build:
+      context: .
+      args:
+        USER_ID: 2000
+        GROUP_ID: 2000
+    image: tor-lyrebird
+    ports:
+      # SOCKS proxy
+      - "9350:9350/tcp"
+      # control port
+      - "9351:9351/tcp"
+      # DNS over Tor
+      - "9352:9352/udp"
+    volumes:
+      - ./tor:/etc/tor
+    restart: unless-stopped
+    # wait - overwrites CMD of Dockerfile
+    # command: tail -f /dev/null
