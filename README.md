@@ -17,3 +17,6 @@ Docker container with Tor proxies obfuscated with lyrebird (fresh bridges are re
     - `curl -x socks5h://localhost:9350 https://check.torproject.org/api/ip`
 4. Shutdown
     - `docker-compose`
+
+## References
+1. [torrc man](https://manpages.debian.org/jessie/tor/torrc.5)
