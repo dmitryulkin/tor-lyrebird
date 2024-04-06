@@ -8,10 +8,25 @@ Log notice file /var/log/tor/notices.log
 # tor's work data
 DataDirectory /etc/tor/data
 
-# expose ports
+# expose proxy ports
 SocksPort 0.0.0.0:9350
-ControlPort 0.0.0.0:9351
 DNSPort 0.0.0.0:9352
+# Accept on ports only from localhost and RFC1918 networks
+SocksPolicy accept 127.0.0.1,
+SocksPolicy accept accept 10.0.0.0/8,accept 172.16.0.0/12,accept 192.168.0.0/16
+# Reject all others
+SocksPolicy reject *
+
+# expose control port
+ControlPort 0.0.0.0:9351
+# control port authentication by cookie file stored in /etc/tor/control.authcookie
+CookieAuthentication 1
+# CookieAuthFileGroupReadable 1
+# CookieAuthFile Path
+# control port authentication by password
+# generate hash with tor --hash-password password
+# HashedControlPassword 16:872...
+# HashedControlPassword 16:147...
 
 # bridges
 UseBridges 1
