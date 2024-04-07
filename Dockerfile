@@ -17,9 +17,7 @@ RUN echo '@edgecommunity https://dl-cdn.alpinelinux.org/alpine/edge/community' >
     chmod -R 700 /etc/tor
 
 COPY --chown=${USER_NAME}:${USER_NAME} start.sh /srv/
-COPY --chown=${USER_NAME}:${USER_NAME} restart.sh /srv/
-RUN chmod +x /srv/start.sh && \
-    chmod +x /srv/restart.sh
+RUN chmod +x /srv/start.sh
 
 HEALTHCHECK --start-period=20s --timeout=15s --interval=60s \
     CMD curl -x socks5h://localhost:9350 'https://check.torproject.org/api/ip' | \
