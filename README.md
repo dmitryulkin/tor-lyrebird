@@ -18,7 +18,7 @@ Docker container with Tor proxies obfuscated with lyrebird (fresh bridges are re
     - `make stop`
 ### Dev
 1. If tor/torrc changed then script `scripts/restart.sh` reconfigure Tor without container restart
-    - 'make restart'
+    - `make restart`
 2. If Dockerfile or some its stuff changed then force rebuild
     - `make rebuild`
 
