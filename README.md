@@ -10,16 +10,17 @@ Docker container with Tor proxies obfuscated with lyrebird (fresh bridges are re
 ## Usage
 ### Basic
 1. Prepare `tor/torrc` settings file from `tor/torrc.template`
-2. Deploy
-    - `docker-compose up -d`
+2. Deploy and start
+    - `make run`
 3. Check
-    - `curl -x socks5h://localhost:9350 https://check.torproject.org/api/ip`
+    - `make check`
 4. Shutdown
-    - `docker-compose`
+    - `make stop`
 ### Dev
 1. If tor/torrc changed then script `scripts/restart.sh` reconfigure Tor without container restart
+    - 'make restart'
 2. If Dockerfile or some its stuff changed then force rebuild
-    - `docker-compose build`
+    - `make rebuild`
 
 ## References
 1. [torrc man](https://manpages.debian.org/jessie/tor/torrc.5)
