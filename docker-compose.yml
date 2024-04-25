@@ -4,8 +4,8 @@ services:
     build:
       context: .
       args:
+        USER_NAME: tor
         USER_ID: 2000
-        GROUP_ID: 2000
     image: tor-lyrebird
     ports:
       # SOCKS proxy
@@ -16,6 +16,6 @@ services:
       - "9352:9352/udp"
     volumes:
       - ./tor:/etc/tor
-    restart: unless-stopped
+    restart: on-failure
     # wait - overwrites CMD of Dockerfile
     # command: tail -f /dev/null

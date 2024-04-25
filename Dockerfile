@@ -1,10 +1,9 @@
 FROM alpine:3.15.4
 
-ARG USER_ID
-ARG GROUP_ID
+ARG USER_ID=2000
 ARG USER_NAME=tor
 # -D - no password, -g - GECOS
-RUN addgroup -g ${GROUP_ID} -S ${USER_NAME} && \
+RUN addgroup -g ${USER_ID} -S ${USER_NAME} && \
     adduser -u ${USER_ID} -S ${USER_NAME} -G ${USER_NAME} -D -g ""
 ENV TZ=Europe/Moscow
 
