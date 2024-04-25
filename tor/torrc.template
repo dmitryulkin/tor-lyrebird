@@ -17,6 +17,9 @@ SocksPolicy accept 10.0.0.0/8,accept 172.16.0.0/12,accept 192.168.0.0/16
 # Reject all others
 SocksPolicy reject *
 
+# change circuit each 60 seconds
+MaxCircuitDirtiness 60
+
 # expose control port
 ControlPort 0.0.0.0:9351
 # control port authentication by cookie file stored in /etc/tor/data/control_auth_cookie
